@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Drop Game</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="game-wrapper">
         <img src="img/cw_logo-horizontal.png" alt="charity: water" class="brand-logo">
         <h1 class="game-title">Water Drop</h1>
-        <p class="game-tagline">Catch the good drops, avoid the bad ones! Try to get 15 points!</p>
+        <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
+        <div class="score-panel-sub">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+            </select>
+            <div class="milestone-hint">Milestones will appear while playing.</div>
+        </div>
         <div class="score-panel">
                 <div class="score">Score: <span id="score">0</span></div>
                 <div class="timer">Time: <span id="time">30</span>s</div>
@@ -27,6 +37,17 @@
             <div id="message" aria-live="polite"></div>
             <canvas id="confetti-canvas"></canvas>
     </div>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <p>Learn more about charity: water and how to help bring clean water to communities:</p>
+                <p>
+                    <a href="https://www.charitywater.org/" target="_blank" rel="noopener">charity: water — main site</a>
+                     ·
+                    <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener">Donate</a>
+                </p>
+            </div>
+        </footer>
 
         <!-- SVG defs for water-drop shape to clone in JS -->
         <svg id="drop-defs" width="0" height="0" aria-hidden="true">
