@@ -1,0 +1,238 @@
+/* Charity: water Brand Colors & Fonts
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+Fonts:
+- Proxima Nova
+- Avenir
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand-logo {
+    width: 320px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin-top: 8px;
+}
+
+.score-panel {
+    display: flex;
+    justify-content: space-between;  /* Space between score and button */
+    align-items: center;
+    width: 800px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timer {
+    flex: 0 1 auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#game-container {
+    width: 800px;
+    height: 600px;
+    background-color: #e6f7ff;
+    border: 2px solid #333;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+#start-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#start-btn:hover {
+    background-color: #45a049;
+}
+
+.score {
+    flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.water-drop {
+    position: absolute;
+    width: 60px;  /* increased from 40px */
+    height: 60px; /* increased from 40px */
+    background-color: transparent;
+    border-radius: 50%;
+    animation: dropFall linear forwards;
+    transform-origin: center;
+    cursor: pointer;
+    padding: 15px;  /* Add padding for larger click area */
+    margin: -15px;  /* Offset padding to maintain visual size */
+    transition: transform 0.1s ease;  /* Smooth hover effect */
+}
+
+.water-drop:hover {
+    transform: scale(1.1);  /* Slight grow effect on hover */
+}
+
+.bad-drop {
+    background-color: #ff4444;
+}
+
+/* SVG-based drop visuals inserted inside .water-drop */
+.water-drop svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* bucket at the bottom the player controls */
+.bucket {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 80px;
+    background: linear-gradient(180deg, #2E9DF7 0%, #155fa8 100%);
+    border-radius: 12px 12px 8px 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 8px;
+    cursor: grab;
+    z-index: 20;
+}
+
+.bucket:active { cursor: grabbing; }
+
+.bucket .lip {
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    right: 10px;
+    height: 16px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 8px;
+}
+
+/* Ensure bucket sits above drops visually */
+#game-container .bucket { z-index: 50; }
+
+.game-title {
+    color: #131313;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 5px;  /* reduced from 20px */
+    text-align: center;
+}
+
+.game-tagline {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@keyframes dropFall {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(600px);
+    }
+}
+
+@media (max-width: 850px) {
+    .game-wrapper, .score-panel, #game-container {
+        width: 95vw;
+    }
+    
+    #game-container {
+        height: 70vh;
+    }
+}
+
+/* Additional UI styles */
+.controls {
+    display: flex;
+    gap: 8px;
+}
+
+#reset-btn {
+    padding: 8px 16px;
+    background-color: #FF902A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#message {
+    margin-top: 12px;
+    min-height: 24px;
+    font-size: 18px;
+    color: #131313;
+    text-align: center;
+}
+
+#confetti-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* allow clicks through */
+}
+
+.drop-score-pop {
+    position: absolute;
+    pointer-events: none;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    transform: translateY(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+

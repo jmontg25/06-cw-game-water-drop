@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Drop Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <img src="img/cw_logo-horizontal.png" alt="charity: water" class="brand-logo">
+        <h1 class="game-title">Water Drop</h1>
+        <p class="game-tagline">Catch the good drops, avoid the bad ones! Try to get 15 points!</p>
+        <div class="score-panel">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="timer">Time: <span id="time">30</span>s</div>
+                <div class="controls">
+                    <button id="start-btn">Start</button>
+                    <button id="reset-btn">Reset</button>
+                </div>
+        </div>
+        
+            <div id="game-container" aria-label="game area">
+                <!-- Drops will be appended here -->
+            </div>
+
+            <div id="message" aria-live="polite"></div>
+            <canvas id="confetti-canvas"></canvas>
+    </div>
+
+        <!-- SVG defs for water-drop shape to clone in JS -->
+        <svg id="drop-defs" width="0" height="0" aria-hidden="true">
+            <defs>
+                <path id="drop-shape" d="M50 0 C30 20 10 40 10 60 C10 85 30 100 50 100 C70 100 90 85 90 60 C90 40 70 20 50 0 Z" />
+            </defs>
+        </svg>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
